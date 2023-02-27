@@ -17,9 +17,8 @@ locals {
     subnet_id = var.environment == "prd" ? module.prd_vnet[0].subnet_id : var.environment == "stg" ? module.stg_vnet[0].subnet_id : module.dev_vnet[0].subnet_id
 
     stg_resource_group_name = "${var.bu}-${var.az_region}-stg-${var.service_name}"
-    resource_name_prefix = "${var.bu}-${var.az_region}-${var.environment}"
-    # UPDATE first time
-    # to have unique service identifier for your app
+    resource_name_prefix = "${var.bu}-${var.az_region}-${var.environment}-gajlj"
+
     svc_identifier_uri = "api://${local.resource_name_prefix}-${var.service_name}"
 }
 
@@ -90,7 +89,7 @@ data "azuread_client_config" "current" {
 
 resource "azuread_application" "authorized" {
 
-  display_name = "${local.resource_name_prefix}-client"
+  display_name = "${local.resource_name_prefix}-${var.service_name}-authorized"
   owners       = [data.azuread_client_config.current.object_id]
   tags = local.azad_tags
 }
@@ -101,7 +100,7 @@ resource "azuread_application_password" "authorized" {
 
 resource "azuread_application" "authorizer" {
 
-  display_name = "${local.resource_name_prefix}-${var.service_name}"
+  display_name = "${local.resource_name_prefix}-${var.service_name}-authorizer"
   identifier_uris  = [local.svc_identifier_uri]
   owners = [data.azuread_client_config.current.object_id]
   tags = local.azad_tags

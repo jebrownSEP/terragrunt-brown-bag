@@ -41,8 +41,6 @@ resource "azurerm_windows_web_app" "this" {
     value = var.connection_string
   }
   site_config {
-    # UPDATE first time
-    # likely want this on when not on free tier
     always_on = var.environment == "prd" ? true : false
     application_stack {
         current_stack = "dotnet"
