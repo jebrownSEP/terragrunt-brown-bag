@@ -41,7 +41,7 @@ variable "database_type" {
 }
 
 variable "bu" {
-    description = "Culligan business unit (e.g. flg)"
+    description = "Customer business unit (e.g. flg)"
     type        = string
 }
 

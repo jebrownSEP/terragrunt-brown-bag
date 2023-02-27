@@ -9,6 +9,8 @@ locals {
         "bu=${var.bu}",
         "owner=${var.owner}",
     ]
+    service_name = "demo"
+
     # There is one VNet for each subscription: nonprod and prod
     nonprod_vnet_name = "${var.bu}-${var.az_region}-nonprodvnet-${var.service_name}"
     prod_vnet_name = "${var.bu}-${var.az_region}-prodvnet-${var.service_name}"
@@ -79,7 +81,7 @@ module "prd_vnet" {
     address_space = var.address_space
     subnet_range = var.subnet_range
     resource_name_prefix = local.resource_name_prefix
-    service_name = var.service_names
+    service_name = var.service_name
     vnet_tags = local.azurerm_tags
     route_table_fwd_address = var.route_table_fwd_address
 }

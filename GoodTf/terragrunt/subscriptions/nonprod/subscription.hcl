@@ -6,4 +6,8 @@ locals {
   # vnet config
   address_space = "10.254.38.0/24"
   route_table_fwd_address = "10.254.0.70"
+
+  # tag data
+  bu = "nonprd-bu"
+  owner= "adminOwnerEmail@sharklasers.com"
 }

@@ -1,5 +1,5 @@
 output "webapp_url" {
-    value = module.windows_webapi.this.webapp_url
+    value = module.windows_webapi.webapp_url
 }
 output "scope" {
     value = local.svc_identifier_uri

@@ -29,7 +29,7 @@ variable "route_table_fwd_address" {
 }
 
 variable "bu" {
-    description = "Culligan business unit (e.g. flg)"
+    description = "Customer business unit (e.g. flg)"
     type        = string
 }
 
