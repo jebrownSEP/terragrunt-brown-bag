@@ -25,8 +25,7 @@ locals {
 
 # Create the resource group
 resource "azurerm_resource_group" "this" {
-  # UPDATE first time
-  # to have unique resource group for your app/resources
+
   name     = "${var.bu}-${var.az_region}-${var.environment}-${var.service_name}"
   location = var.az_region
   tags     = local.azurerm_tags
@@ -90,9 +89,8 @@ data "azuread_client_config" "current" {
 }
 
 resource "azuread_application" "authorized" {
-  # UPDATE first time
-  # to have unique app registration name
-  display_name = "${local.resource_name_prefix}-GREG"
+
+  display_name = "${local.resource_name_prefix}-client"
   owners       = [data.azuread_client_config.current.object_id]
   tags = local.azad_tags
 }
@@ -102,8 +100,7 @@ resource "azuread_application_password" "authorized" {
 }
 
 resource "azuread_application" "authorizer" {
-  # UPDATE first time
-  # to have unique app registration name
+
   display_name = "${local.resource_name_prefix}-${var.service_name}"
   identifier_uris  = [local.svc_identifier_uri]
   owners = [data.azuread_client_config.current.object_id]
@@ -122,8 +119,7 @@ resource "azuread_service_principal" "this" {
 module "windows_webapi" {
     source = "./windows_webapi"
     az_region = var.az_region
-    # UPDATE first time
-    # to have unique prefix for the resources created
+
     az_name_prefix =  "${var.bu}${var.az_region}${var.environment}${var.service_name}"
     app_service_plan = var.app_service_plan
     connection_string = var.connection_string
