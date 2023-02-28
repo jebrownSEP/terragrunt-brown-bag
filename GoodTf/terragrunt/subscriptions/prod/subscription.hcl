@@ -1,5 +1,6 @@
 # populate this with output from setRemoteState bash script
 locals {
+  // TODO: update for your subscription
   subscription_id = "605a3a1c-01d3-4075-947a-8c2ad12066d7"
 
   app_service_plan = "S1"

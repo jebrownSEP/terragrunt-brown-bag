@@ -17,7 +17,9 @@ locals {
     subnet_id = var.environment == "prd" ? module.prd_vnet[0].subnet_id : var.environment == "stg" ? module.stg_vnet[0].subnet_id : module.dev_vnet[0].subnet_id
 
     stg_resource_group_name = "${var.bu}-${var.az_region}-stg-${var.service_name}"
-    resource_name_prefix = "${var.bu}-${var.az_region}-${var.environment}-gajlj"
+
+    // TODO: add unique characters to end
+    resource_name_prefix = "${var.bu}-${var.az_region}-${var.environment}-qshhf"
 
     svc_identifier_uri = "api://${local.resource_name_prefix}-${var.service_name}"
 }
