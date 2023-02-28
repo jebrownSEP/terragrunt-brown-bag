@@ -12,10 +12,10 @@ Terragrunt and Terraform SEP Brown bag
 
 * Update the TODO: sections
     - With the current setup, you'll still need to updated the `subscription_id` in the  `subscription.hcl` files
-    - Need to add unique characters to end of `resource_name_prefix` in the `main.tf` file
+    - Need to add unique characters to end of `resource_name_prefix` in the `tf/main.tf` file
 
-* Cd into the inner `app` folder that you want to run (for example: GoodTf/terragrunt/subscriptions/nonprod/stg/eastus2/app)
-    - We have a dependency where stg must be run first.
+* Cd into the inner `app` folder that you want to run. (for example: GoodTf/terragrunt/subscriptions/nonprod/stg/eastus2/app)
+    - **We have a dependency where stg must be run first** .
 * `terragrunt apply`
 
 * When all done, can run the following to destroy
