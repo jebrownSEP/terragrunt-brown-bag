@@ -1,0 +1,1 @@
+See README in [GoodTF](./GoodTf/README.md) for how to run the Terragrunt in that folder
